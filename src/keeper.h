@@ -1,6 +1,7 @@
 #ifndef KEEPER_H
 #define KEEPER_H
 #include "aeroflot.h"
+
 class Keeper
 {
   private:
@@ -10,14 +11,17 @@ class Keeper
 	void setSize(int size);
 	void normalize(int index);
 	void sort();
+	void quickSort(int low, int high);
+	int partition(int low, int high);
 
   public:
 	Keeper();
 	Keeper(Keeper &other);
 	Aeroflot &operator[](int index);
-	void add(const Aeroflot &entity);
+	void add(Aeroflot entity);
 	void remove(int index);
 	void search(std::string);
+	void save(std::ostream &os);
 	~Keeper();
 };
 #endif

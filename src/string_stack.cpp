@@ -17,6 +17,7 @@ void StringStack::push(std::string str)
 	if (!first)
 	{
 		last = first = new StringElement(str);
+		size++;
 		return;
 	}
 	StringElement *tmp = first;
@@ -38,5 +39,14 @@ std::string StringStack::pop()
 	{
 		last = tmp;
 	}
+	size--;
 	return ret;
+}
+
+StringStack::~StringStack()
+{
+	while (size != 0)
+	{
+		pop();
+	}
 }

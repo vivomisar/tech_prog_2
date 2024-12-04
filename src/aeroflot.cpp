@@ -12,7 +12,7 @@ Aeroflot::Aeroflot(std::string dstPoint, std::string planeType, std::string numb
 	std::cout << "Конструктор (с параметрами): Aeroflot\n";
 }
 
-Aeroflot::Aeroflot(Aeroflot &other) : number(other.number), dstPoint(other.dstPoint), planeType(other.planeType)
+Aeroflot::Aeroflot(const Aeroflot &other) : number(other.number), dstPoint(other.dstPoint), planeType(other.planeType)
 {
 	std::cout << "Конструктор (копирования): Aeroflot\n";
 }
@@ -63,23 +63,23 @@ std::ostream &operator<<(std::ostream &os, Aeroflot &af)
 	return os;
 }
 
-bool Aeroflot::operator<(Aeroflot &other)
+bool Aeroflot::operator<(const Aeroflot &other) const
 {
 	return dstPoint < other.dstPoint;
 }
-bool Aeroflot::operator>(Aeroflot &other)
+bool Aeroflot::operator>(const Aeroflot &other) const
 {
 	return dstPoint > other.dstPoint;
 }
-bool Aeroflot::operator==(Aeroflot &other)
+bool Aeroflot::operator==(const Aeroflot &other) const
 {
 	return dstPoint == other.dstPoint;
 }
-bool Aeroflot::operator<=(Aeroflot &other)
+bool Aeroflot::operator<=(const Aeroflot &other) const
 {
 	return dstPoint <= other.dstPoint;
 }
-bool Aeroflot::operator>=(Aeroflot &other)
+bool Aeroflot::operator>=(const Aeroflot &other) const
 {
 	return dstPoint >= other.dstPoint;
 }

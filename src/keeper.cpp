@@ -1,16 +1,59 @@
 #include "keeper.h"
 #include "aeroflot.h"
-#include <algorithm>
+#include <cstdlib>
 #include <iostream>
+Keeper::Keeper() : size(0), capacity(0), data(nullptr)
+{
+	std::cout << "Конструктор: Keeper (без параметров)\n";
+}
+
+Keeper::Keeper(Keeper &other)
+{
+	std::cout << "Конструктор: Keeper (копирования)\n";
+}
 
 void Keeper::sort()
 {
-	std::sort(data, data + size - 1);
+	quickSort(0, size - 1);
+}
+
+int Keeper::partition(int low, int high)
+{
+	Aeroflot pivot = data[high];
+	int i = low - 1;
+	for (int j = low; j < high; j++)
+	{
+		if (data[j] < pivot)
+		{
+			i++;
+			std::swap(data[i], data[j]);
+		}
+	}
+	std::swap(data[i + 1], data[high]);
+	return i + 1;
+}
+
+void Keeper::quickSort(int low, int high)
+{
+	if (low < high)
+	{
+		int pi = partition(low, high);
+		quickSort(low, pi - 1);
+		quickSort(pi + 1, high);
+	}
 }
 
 Aeroflot &Keeper::operator[](int index)
 {
 	return data[index];
+}
+
+void Keeper::save(std::ostream &os)
+{
+	for (int i = 0; i < size; ++i)
+	{
+		os << data[i] << '\n';
+	}
 }
 
 void Keeper::setSize(int size)
@@ -41,11 +84,12 @@ void Keeper::setSize(int size)
 	this->size = this->capacity = size;
 }
 
-void Keeper::add(const Aeroflot &entity)
+void Keeper::add(Aeroflot entity)
 {
 	if (capacity == size)
 		setSize(size + 1);
 	data[size - 1] = entity;
+	sort();
 }
 
 void Keeper::normalize(int index)

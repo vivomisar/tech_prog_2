@@ -11,7 +11,7 @@ class Aeroflot
   public:
 	Aeroflot();
 	Aeroflot(std::string, std::string, std::string);
-	Aeroflot(Aeroflot &other);
+	Aeroflot(const Aeroflot &other);
 
 	void setDst(std::string);
 	void setPlaneType(std::string);
@@ -24,11 +24,11 @@ class Aeroflot
 	friend std::istream &operator>>(std::istream &, Aeroflot &);
 	friend std::ostream &operator<<(std::ostream &, Aeroflot &);
 
-	bool operator<(Aeroflot &);
-	bool operator>(Aeroflot &);
-	bool operator==(Aeroflot &);
-	bool operator<=(Aeroflot &);
-	bool operator>=(Aeroflot &);
+	bool operator<(const Aeroflot &) const;
+	bool operator>(const Aeroflot &) const;
+	bool operator==(const Aeroflot &) const;
+	bool operator<=(const Aeroflot &) const;
+	bool operator>=(const Aeroflot &) const;
 
 	~Aeroflot();
 };
