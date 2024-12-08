@@ -11,6 +11,7 @@ class Aeroflot
   public:
 	Aeroflot();
 	Aeroflot(std::string, std::string, std::string);
+	Aeroflot(Aeroflot &other);
 	Aeroflot(const Aeroflot &other);
 
 	void setDst(std::string);

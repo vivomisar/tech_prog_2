@@ -12,6 +12,11 @@ Aeroflot::Aeroflot(std::string dstPoint, std::string planeType, std::string numb
 	std::cout << "Конструктор (с параметрами): Aeroflot\n";
 }
 
+Aeroflot::Aeroflot(Aeroflot &other) : number(other.number), dstPoint(other.dstPoint), planeType(other.planeType)
+{
+	std::cout << "Конструктор (копирования): Aeroflot\n";
+}
+
 Aeroflot::Aeroflot(const Aeroflot &other) : number(other.number), dstPoint(other.dstPoint), planeType(other.planeType)
 {
 	std::cout << "Конструктор (копирования): Aeroflot\n";

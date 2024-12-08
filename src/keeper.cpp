@@ -77,7 +77,7 @@ void Keeper::setSize(int size)
 	if (size == 0)
 		return;
 	data = new Aeroflot[size];
-	for (int i = 0; i < this->size; ++i)
+	for (int i = 0; i < (this->size > size ? size : this->size); ++i)
 	{
 		data[i] = tmp[i];
 	}
